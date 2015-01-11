@@ -13,6 +13,7 @@ public class Dropper {
 	private static JTextField textField;
 	private static JTextField textField_1;
 	private static final ButtonGroup buttonGroup = new ButtonGroup();
+	private static JTextField textField_2;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
@@ -43,7 +44,7 @@ public class Dropper {
 		comboBoxArrival.setBounds(214, 127, 237, 20);
 		panel.add(comboBoxArrival);
 		JButton btnNewButton = new JButton("Calculate Delay");
-		btnNewButton.setBounds(240, 264, 188, 23);
+		btnNewButton.setBounds(240, 288, 188, 23);
 		panel.add(btnNewButton);
 		JLabel lblDelay = new JLabel("Arrival");
 		lblDelay.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -51,15 +52,15 @@ public class Dropper {
 		panel.add(lblDelay);
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
 		buttonGroup.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.setBounds(214, 167, 23, 23);
+		rdbtnNewRadioButton.setBounds(214, 175, 23, 23);
 		panel.add(rdbtnNewRadioButton);
 		JRadioButton radioButton = new JRadioButton("");
 		buttonGroup.add(radioButton);
-		radioButton.setBounds(280, 167, 23, 23);
+		radioButton.setBounds(214, 201, 23, 23);
 		panel.add(radioButton);
 		JLabel lblC = new JLabel("c");
 		lblC.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblC.setBounds(130, 167, 46, 14);
+		lblC.setBounds(130, 176, 46, 14);
 		panel.add(lblC);
 		JLabel lblN = new JLabel("n");
 		lblN.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -67,12 +68,26 @@ public class Dropper {
 		panel.add(lblN);
 		String[] Scaling = { "item1", "item2", "item3" };
 		JComboBox comboBoxScaling = new JComboBox(Scaling);
-		comboBoxScaling.setBounds(214, 216, 237, 20);
+		comboBoxScaling.setBounds(214, 245, 237, 20);
 		panel.add(comboBoxScaling);
 
 		JLabel lblScaling = new JLabel("Scaling");
 		lblScaling.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblScaling.setBounds(130, 219, 46, 14);
+		lblScaling.setBounds(130, 248, 46, 14);
 		panel.add(lblScaling);
+		
+		JLabel lblConstant = new JLabel("Constant");
+		lblConstant.setBounds(256, 185, 46, 14);
+		panel.add(lblConstant);
+		
+		JLabel lblFormulaWithC = new JLabel("Formula with c1 = ");
+		lblFormulaWithC.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblFormulaWithC.setBounds(256, 210, 89, 14);
+		panel.add(lblFormulaWithC);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(355, 205, 46, 20);
+		panel.add(textField_2);
+		textField_2.setColumns(10);
 	}
 }

@@ -1,93 +1,118 @@
-//import java.awt.Frame;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.SwingConstants;
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.UIManager.*;
 
 public class Dropper {
-	private static JTextField textField;
-	private static JTextField textField_1;
-	private static final ButtonGroup buttonGroup = new ButtonGroup();
-	private static JTextField textField_2;
-
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		JFrame Drop = new JFrame();
-		Drop.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		Drop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Drop.setVisible(true);
-		Drop.getContentPane();
+	public Dropper() {
+
+		JFrame Drop = new JFrame("Stochastic Network Calculator");
+
 		Drop.setSize(800, 400);
-		JPanel panel = new JPanel();
-		Drop.getContentPane().add(panel);
-		panel.setLayout(null);
+		Drop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel panel = new JPanel(new GridBagLayout());
+		Drop.getContentPane().add(panel, BorderLayout.CENTER);
+		GridBagConstraints c = new GridBagConstraints();
+
 		JLabel label = new JLabel("\u03A3");
-		label.setHorizontalAlignment(SwingConstants.RIGHT);
-		label.setBounds(130, 8, 46, 14);
-		panel.add(label);
-		textField = new JTextField();
-		textField.setBounds(214, 5, 237, 20);
-		panel.add(textField);
-		textField.setColumns(10);
-		textField_1 = new JTextField();
-		textField_1.setBounds(214, 62, 237, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(0, 10, 10, 10);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		panel.add(label, c);
+
+		JTextField textField = new JTextField(10);
+		c.gridx = 1;
+		c.gridy = 0;
+		panel.add(textField, c);
+
+		JLabel lblN = new JLabel("n");
+		c.gridx = 0;
+		c.gridy = 1;
+		panel.add(lblN, c);
+
+		JTextField textField_1 = new JTextField(10);
+		c.gridx = 1;
+		c.gridy = 1;
+		panel.add(textField_1, c);
+
+		JLabel lblDelay = new JLabel("Arrival");
+		c.gridx = 0;
+		c.gridy = 2;
+		panel.add(lblDelay, c);
+
 		String[] Arrivals = { "Markov Modulated On/OFF", "Bernoulli", "Poisson" };
 		JComboBox comboBoxArrival = new JComboBox(Arrivals);
-		comboBoxArrival.setBounds(214, 127, 237, 20);
-		panel.add(comboBoxArrival);
-		JButton btnNewButton = new JButton("Calculate Delay");
-		btnNewButton.setBounds(240, 288, 188, 23);
-		panel.add(btnNewButton);
-		JLabel lblDelay = new JLabel("Arrival");
-		lblDelay.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDelay.setBounds(130, 130, 46, 14);
-		panel.add(lblDelay);
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
-		buttonGroup.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.setBounds(214, 175, 23, 23);
-		panel.add(rdbtnNewRadioButton);
-		JRadioButton radioButton = new JRadioButton("");
-		buttonGroup.add(radioButton);
-		radioButton.setBounds(214, 201, 23, 23);
-		panel.add(radioButton);
+		c.gridx = 1;
+		c.gridy = 2;
+		panel.add(comboBoxArrival, c);
+
 		JLabel lblC = new JLabel("c");
-		lblC.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblC.setBounds(130, 176, 46, 14);
-		panel.add(lblC);
-		JLabel lblN = new JLabel("n");
-		lblN.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblN.setBounds(130, 65, 46, 14);
-		panel.add(lblN);
-		String[] Scaling = { "item1", "item2", "item3" };
-		JComboBox comboBoxScaling = new JComboBox(Scaling);
-		comboBoxScaling.setBounds(214, 245, 237, 20);
-		panel.add(comboBoxScaling);
+		c.gridx = 0;
+		c.gridy = 3;
+		panel.add(lblC, c);
+
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("    Constant");
+		rdbtnNewRadioButton.setFocusPainted(false);
+		c.gridx = 1;
+		c.gridy = 3;
+		panel.add(rdbtnNewRadioButton, c);
+
+		JRadioButton radioButton = new JRadioButton("    Formula with c1 =");
+		radioButton.setFocusPainted(false);
+		c.gridx = 1;
+		c.gridy = 4;
+		panel.add(radioButton, c);
+
+		ButtonGroup g = new ButtonGroup();
+		g.add(rdbtnNewRadioButton);
+		g.add(radioButton);
+
+		JTextField textField_2 = new JTextField(5);
+		c.gridx = 2;
+		c.gridy = 4;
+		panel.add(textField_2, c);
 
 		JLabel lblScaling = new JLabel("Scaling");
-		lblScaling.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblScaling.setBounds(130, 248, 46, 14);
-		panel.add(lblScaling);
-		
-		JLabel lblConstant = new JLabel("Constant");
-		lblConstant.setBounds(256, 185, 46, 14);
-		panel.add(lblConstant);
-		
-		JLabel lblFormulaWithC = new JLabel("Formula with c1 = ");
-		lblFormulaWithC.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFormulaWithC.setBounds(256, 210, 89, 14);
-		panel.add(lblFormulaWithC);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(355, 205, 46, 20);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		c.gridx = 0;
+		c.gridy = 5;
+		panel.add(lblScaling, c);
+
+		String[] Scaling = { "Bernoulli Scaling Process", "Markov Modulated",
+				"item3" };
+		JComboBox comboBoxScaling = new JComboBox(Scaling);
+		c.gridx = 1;
+		c.gridy = 5;
+		panel.add(comboBoxScaling, c);
+
+		JButton btnNewButton = new JButton("Calculate Delay");
+		c.gridx = 1;
+		c.gridy = 6;
+		panel.add(btnNewButton, c);
+		Drop.setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		try {
+			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		EventQueue.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				Dropper dropper = new Dropper();
+			}
+		});
 	}
 }

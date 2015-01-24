@@ -19,6 +19,7 @@ public class Dropper {
 		c.gridy = 0;
 		c.insets = new Insets(0, 10, 10, 10);
 		c.fill = GridBagConstraints.HORIZONTAL;
+		
 		panel.add(label, c);
 
 		JTextField textField = new JTextField(10);
